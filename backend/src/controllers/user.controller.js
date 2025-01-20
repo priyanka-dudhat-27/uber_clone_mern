@@ -35,6 +35,8 @@ module.exports.loginUser = async (req, res, next) => {
   }
   const { email, password } = req.body;
 
+  try{
+    
   const user = await userModel.findOne({ email }).select("+password");
   if (!user) {
     return res.status(404).json({ message: "User not found" });
@@ -55,6 +57,10 @@ module.exports.loginUser = async (req, res, next) => {
   });
 
   res.status(200).json({ token, user });
+  }
+  catch(error){
+    next(error);
+  }
 }
 
 module.exports.getUserProfile = async (req, res, next) => {
@@ -62,7 +68,7 @@ module.exports.getUserProfile = async (req, res, next) => {
 }
 
 module.exports.logoutUser = async (req, res, next) => {
-    const token=req.cookies.token || (req.headers.authorization && req.headers.authorization.split(' ')[1]);
+    const token=req.cookies.token || req.headers.authorization?.split(' ')[1];
 
     if(token){
         await blackListedTokenModel.create({token});
