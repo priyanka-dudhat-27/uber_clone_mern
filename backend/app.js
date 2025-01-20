@@ -3,9 +3,9 @@ dotenv.config();
 const express=require('express');
 const cors=require('cors');
 const connectDB=require('./db/db');
-const userRoutes=require('./src/routes/user.routes');
 const cookieParser=require('cookie-parser');
-
+const userRoutes=require('./src/routes/user.routes');
+const captainRoutes=require('./src/routes/captain.routes');
 connectDB();
 const app=express();
 
@@ -15,5 +15,6 @@ app.use(cors());
 app.use(cookieParser());
 
 app.use('/users',userRoutes);
+app.use('/captain',captainRoutes);
 
 module.exports=app;
