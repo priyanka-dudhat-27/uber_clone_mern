@@ -45,5 +45,17 @@ module.exports.loginUser = async (req, res, next) => {
   }
 
   const token = user.generateToken();
+
+  res.cookie('token', token, {
+    httpOnly: true,
+    secure: true,
+    sameSite: 'strict',
+    maxAge: 1000 * 60 * 60 * 24 * 7,
+  });
+
   res.status(200).json({ token, user });
+}
+
+module.exports.getUserProfile = async (req, res, next) => {
+    res.status(200).json(req.user);
 }
