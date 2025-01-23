@@ -31,7 +31,7 @@ const CaptainSignup = () => {
         src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png"
       />
       <form onSubmit={submitHandler}>
-      <h3 className="text-lg font-medium mb-2">What's your Name</h3>
+      <h3 className="text-lg font-medium mb-2">What's our captaion's Name</h3>
       <div className='flex gap-4 mb-5'>
       <input
           required
@@ -50,7 +50,7 @@ const CaptainSignup = () => {
           placeholder="last name"
         />
       </div>
-        <h3 className="text-lg font-medium mb-2">What's your email</h3>
+        <h3 className="text-lg font-medium mb-2">What's our captaion's email</h3>
         <input
           required
           className="bg-[#eeeeee] mb-7 border rounded px-4 py-2 w-full text-lg placeholder:text-base"
